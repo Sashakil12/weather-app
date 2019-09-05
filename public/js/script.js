@@ -39,7 +39,8 @@ form.addEventListener('submit', (e) => {
     fetch(url).then((response) => {
         response.json().then((data) => {
             if (data.error) {
-                animation.classList.toggle('hidden')
+                animation.classList.add('hidden');
+                weatherArea.classList.remove('hidden')
                 row1.textContent = "Error occured: " + " " + data.error;
                 const rows = document.querySelectorAll('.row')
                 for (var i = 1; i < rows.length; i++) {
@@ -52,8 +53,8 @@ form.addEventListener('submit', (e) => {
                     rows[i].textContent = ''
                     rows[i].style.display = 'block'    
                        }
-                animation.classList.toggle('hidden')
-                weatherArea.classList.toggle('hidden')
+                animation.classList.add('hidden')
+                weatherArea.classList.remove('hidden')
                 row1.textContent = "Showing results for: " + data.placeName;
                 row2.textContent = "It's, " + data.data.temperature + " here"
                 row3.textContent = "Todays temperature: " + data.data.temperature;
@@ -75,11 +76,6 @@ form.addEventListener('submit', (e) => {
 
 
             }
-
-
-
-
-
 
         })
     })
