@@ -5,7 +5,7 @@ const path = require('path')
 const express = require('express')
 const app = express();
 const hbs = require('hbs')
-
+const port = process.env.PORT||3000;
 app.use(express.static(path.join(__dirname , './public')));
 const viewsDirectory = path.join(__dirname , './templates/views') ;
 app.set('view engine', 'hbs');
@@ -57,7 +57,7 @@ app.get('/about', (req,res)=>{
 
 
 
-app.listen('3000', (req,res)=>{
+app.listen(port, (req,res)=>{
     console.log('alive')
 })
 
