@@ -1,5 +1,5 @@
 {
-  "name": "weather-app",
+  "name": "weather-app-refctored",
   "version": "0.1.0",
   "description": "get weather info_powered by mapbox api and darksky",
   "main": "app.js",
