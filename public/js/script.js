@@ -21,8 +21,8 @@ const row13 = document.querySelector('#m')
 const row14 = document.querySelector('#n')
 const row15 = document.querySelector('#o')
 window.onload = function () {
-    animation.classList.toggle('hidden');
-    weatherArea.classList.toggle('hidden');
+    animation.classList.add('hidden');
+    weatherArea.classList.add('hidden');
     var i = Math.floor(Math.random()*5);
     // document.body.style.backgroundImage = "url(/img/bg-"+i+".jpg)";
     this.document.querySelector('body').style.backgroundImage = "url(/img/bg-" + i + ".jpg)";
@@ -32,7 +32,7 @@ window.onload = function () {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    animation.classList.toggle('hidden')
+    animation.classList.remove('hidden')
     const address = input.value;
     input.value = '';
     const url = '/weather?address=' + address;
@@ -56,20 +56,20 @@ form.addEventListener('submit', (e) => {
                 animation.classList.add('hidden')
                 weatherArea.classList.remove('hidden')
                 row1.textContent = "Showing results for: " + data.placeName;
-                row2.textContent = "It's, " + data.data.temperature + " here"
-                row3.textContent = "Todays temperature: " + data.data.temperature;
-                row4.textContent = "Feels Like, " + data.data.temperature;
+                row2.textContent = "It's, " + data.data.summary + " here"
+                row3.textContent = "Today's temperature: " + data.data.temperature + " degrees here";
+                row4.textContent = "Feels Like, " + data.data.temperature + " degree.";
                 row5.textContent = "Dew point: " + data.data.dewPoint;
-                row6.textContent = "Humidity: " + data.data.humidity;
+                row6.textContent = "Humidity: " + (data.data.humidity* 100) +"%" ;
                 row7.textContent = "Air preassure: " + data.data.pressure;
-                row8.textContent = "Wind Speed: " + data.data.windSpeed;
+                row8.textContent = "Wind Speed: " + data.data.windSpeed +" km/h";
                 row9.textContent = "Wind Gust: " + data.data.windGust;
                 row10.textContent = "Wind Bearing: " + data.data.windBearing;
                 row11.textContent = "Cloud: " + (data.data.cloudCover * 100) + " %";
                 row12.textContent = "Ozone Density: " + data.data.ozone;
                 if (data.data.precipProbability) {
-                    row13.textContent = "Probability of rain: " + (data.data.precipProbability * 100);
-                    row14.textContent = "Rain Intensity: " + data.data.precipIntensity;
+                    row13.textContent = "Probability of rain: " + (data.data.precipProbability * 100) +"%";
+                    row14.textContent = "Rain Intensity: " + (data.data.precipIntensity*100) +"%";
                     row15.textContent = "Strom distance: " + data.data.nearestStormDistance;
 
                 }
